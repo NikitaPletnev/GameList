@@ -1,0 +1,123 @@
+.container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.err {
+    border: 3px solid #DC0B35 !important;
+}
+
+.container > form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    position: relative;
+}
+
+.container > form > svg {
+    margin: 40px auto;
+}
+
+.container > form > button:last-of-type {
+    height: 64px;
+    background: #FDBC11;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.container > form > input {
+    border: 1px solid #F2F2F2;
+    border-radius: 4px;
+    height: 64px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 22px 16px;
+    box-sizing: border-box;
+}
+
+.container > form > i:first-of-type::after {
+    content: "Login";
+    position: absolute;
+    margin-top: -63px;
+    margin-left: 18px;
+    font-style: normal;
+    color: #808080
+}
+
+.container > form > input:focus + i:first-of-type::after {
+    content: "Login";
+    position: absolute;
+    margin-top: -78px;
+    margin-left: 12px;
+    font-style: normal;
+    font-size: 12px;
+    color: #808080;
+    transition: margin-top 150ms linear, margin-left 150ms linear;
+}
+
+.container > form > input:not(:focus):not(invalid) + i:first-of-type::after {
+    content: " ";
+}
+
+
+.container > form > input:focus + i:last-of-type::after {
+    content: "Password";
+    position: absolute;
+    margin-top: -78px;
+    margin-left: 12px;
+    font-style: normal;
+    font-size: 12px;
+    color: #808080;
+    transition: margin-top 150ms linear, margin-left 150ms linear;
+}
+
+.container > form > i:last-of-type::after {
+    content: "Password";
+    position: absolute;
+    margin-top: -63px;
+    margin-left: 18px;
+    font-style: normal;
+    color: #808080
+}
+
+.container > form > input:not(:focus):not(invalid) + i:last-of-type::after {
+    content: " ";
+}
+
+.container > form > p {
+    background: #DC0B35;
+    text-align: center;
+    padding: 10px;
+    color: #FFF;
+    font-weight: bold;
+}
+
+
+.container > form > .passwordTooltip:after {
+    content: ' ';
+    height: 24px;
+    width: 24px;
+    margin-top: -63px;
+    margin-left: calc(100% - 36px);
+    position: absolute;
+    cursor: pointer;
+}
+
+.container > form > .closed:after {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABj0lEQVRIie3UPWsWQRQF4MeoqESEaIgfKERB8Ct2CmKV1tKIoL6FBPI7tBM78Q9ooWisQtCgIAQMpLKJKUTT2CgYEEK0sAiuxdz1HRfj7urbCB6YYmfuOWfvnXuH/6jBhprzYVzGKI5iF9bwES/xHA/xpa3xfkyGWFGzVnAdW5uKn8VqkL/iLs7jQIhsxzFMYDYzeo0dTQwuBOER9jWIP4NX+IzdTbPobxoY6MO2lpze4giO91DvBEbyjWWp1YZ7IH5Iuo9P+eZ96WKfSvX8U/RJs1GE5g/slbIocOMvDG6FxjL2VA8v6vb0TWxsIbwZtzP+uWrAEBb9PKGz0kDV4RTmK9wZbCkDdmbii9LUfojvNUyjg8NSr/frTvITfIvY9xjXLfWMqMKVTHwoTAfwTP07VK7J4JBatDQ5KVLpZAGwCW8i6A4e410m+BYP4i+LyDLHQYytW1RcDeJSmJUoDUoM6j6Mp38nWMVCkDqV/aoBqa0L3GtjcE0qTbVVf2UwgClcamOwHubwohdC/w6+AwYvd3dxZKXvAAAAAElFTkSuQmCC");
+}
+
+.container > form > .opened:after {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABXElEQVRIie2UQUtCQRSFP8JdUta2HkFCj/6ERH+lWvkLWtR/cWkIbsRACCTbuMhFCzcmLdxWoFItX4s5L+fNG/W1MFp44MJwz7mHmXtnBtb479gFykADGAFfipFyZWl+jRxwCUyBaElMpc1lNd8HupZBCzgDQmBTESrXsnRd1S7EATBUwTNQyrChEjBQzVAeXuSBvoT3QMHiAqAGTBR1nSLGNtBWbV9eKVQk6DmCAHgj3ft3cfYGe+IqrvmJiE+g6HA1cQ1gD9PnpnI3jrYoj0ieP+goee052UScPcBAubFHfyWuA7DhkJGnYBF8etcTmLXoAzh0uLq4JuYUAXCrXNXRHmEeYqpFMBvyI+auxwgxA3WH/EqybVvAE3OGDMlr2sZcvRgBZqBjRdUx3wEeWHJNIfnQBmR7aKfACxkeWgzfV3EOHGtnea0vgDtLl+mriLHSz87Gyr7rNf4O31JZhMjSyXpfAAAAAElFTkSuQmCC");
+}
+
+
+
+
