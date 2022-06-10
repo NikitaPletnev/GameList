@@ -66,6 +66,10 @@
     content: " ";
 }
 
+.container > form > input:not(:focus):invalid + i:first-of-type::after {
+    content: "Login";
+}
+
 
 .container > form > input:focus + i:last-of-type::after {
     content: "Password";
@@ -89,6 +93,10 @@
 
 .container > form > input:not(:focus):not(invalid) + i:last-of-type::after {
     content: " ";
+}
+
+.container > form > input:not(:focus):invalid + i:last-of-type::after {
+    content: "Password";
 }
 
 .container > form > p {

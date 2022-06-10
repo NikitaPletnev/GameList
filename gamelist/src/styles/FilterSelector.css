@@ -1,0 +1,55 @@
+.filterSelectorContainer > p {
+    text-transform: capitalize;
+    color: #808080
+}
+
+.filterSelectorContainer > div {
+    padding: 0 10px;
+}
+
+.filterSelectorContainer > div > button {
+    margin: 0 20px 5px 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+.filterSelectorContainer > div > .active {
+    background: #FDBC11;
+}
+
+
+.columnSelector {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.columnSelector > span {
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 100%;
+}
+
+.columnSelector > .active:last-of-type::before {
+    content: " ";
+    position: absolute;
+    right: 7%;
+    top: 6px;
+    height: 15px;
+    width: 42%;
+    background: #FDBC11;
+}
+
+.columnSelector > .active:nth-of-type(2)::before {
+    content: " ";
+    position: absolute;
+    right: 51%;
+    top: 6px;
+    height: 15px;
+    width: 42%;
+    background: #FDBC11;
+}

@@ -10,12 +10,12 @@ interface ListInterface {
 const List = ({grid, games}: ListInterface) => {
     const renderGames = () => {
         if (!games.length) {
-            return null
+            return "Nothing to show"
         }
         return games.map((opt: GameItemInterface) => {
             return (
                 <div key={opt.id}>
-                    <img alt={opt.name} src={opt.coverLarge}/>
+                    <img alt={opt.name} src={opt.cover}/>
                 </div>
             )
         })

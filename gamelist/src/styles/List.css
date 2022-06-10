@@ -1,6 +1,9 @@
 section{
     display: grid;
+    min-width: 65%;
+    max-width: 65%;
 }
+
 
 section > div {
     margin: 0 20px 20px 0;
@@ -10,4 +13,13 @@ section > div {
 section > div > img {
     width: 100%;
     border-radius: 8px;
+}
+
+@media screen and (max-width: 920px){
+    section > div:nth-child(2n) {
+        margin: 0 0 20px 0;
+    }
+    section {
+        max-width: 100%;
+    }
 }

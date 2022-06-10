@@ -1,7 +1,7 @@
 export interface GameItemInterface {
     id: number,
     name: string,
-    provider: string,
+    provider: number,
     cover: string,
     coverLarge: string,
     date: string
