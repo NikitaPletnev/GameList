@@ -15,7 +15,7 @@ const testGames = [
 
 it('renders List element', () => {
     const tree = renderer
-        .create(<List games={testGames} grid={2}/>)
+        .create(<List games={testGames} grid={'1fr 1fr'}/>)
         .toJSON();
     expect(tree).toMatchSnapshot();
 });

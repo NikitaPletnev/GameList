@@ -33,3 +33,13 @@ Full functionality was implemented in accordance with the layout
 (login page and main page with content, all filters and sorting), 
 
 snapshot tests were added, server and API configuration was made.
+
+## To login Use
+
+Login: player1
+Password: player1
+
+or
+
+Login: player2
+Password: player2

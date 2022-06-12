@@ -15,10 +15,10 @@ const GameList = () => {
     const [columnsNumber, setColumnsNumber] = useState<2 | 3 | 4>(window.innerWidth < 920 ? 2 : 4);
     const [search, setSearch] = useState('');
     const [filters, setFilters] = useState<FilterDataInterface>({
-        providers: [],
-        gameGroups: [],
+        providers: JSON.parse(localStorage.getItem(sessionStorage.getItem('user') as string) as string)?.filters?.providers || [],
+        gameGroups: JSON.parse(localStorage.getItem(sessionStorage.getItem('user') as string) as string)?.filters?.gameGroups || [],
     })
-    const [sorting, setSorting] = useState<'none' | 'a-z' | 'z-a' | 'new'>('none')
+    const [sorting, setSorting] = useState<'none' | 'a-z' | 'z-a' | 'new'>(JSON.parse(localStorage.getItem(sessionStorage.getItem('user') as string) as string)?.sorting || 'none')
 
     const [providers, setProviders] = useState<ProviderInterface[]>([]);
     const [groups, setGroups] = useState<GroupInterface[]>([])
@@ -26,27 +26,37 @@ const GameList = () => {
     useEffect(() => {
         if (!sessionStorage.getItem('user')) {
             window.location.href = '/'
+        } else {
+            getProviders().then((response) => {
+                response.json().then((resource) => {
+                    setProviders(resource.data)
+                })
+            })
+            getGroups().then((response) => {
+                response.json().then((resource) => {
+                    setGroups(resource.data)
+                })
+            })
+            getGames().then((response) => {
+                response.json().then((resource: { data: GameItemInterface[] }) => {
+                    setGames(resource.data);
+                    setInitialGames(resource.data);
+
+                })
+            }).catch((err) => console.log(err))
+
         }
-        getProviders().then((response) => {
-            response.json().then((resource) => {
-                setProviders(resource.data)
-            })
-        })
-        getGroups().then((response) => {
-            response.json().then((resource) => {
-                setGroups(resource.data)
-            })
-        })
-        getGames().then((response) => {
-            response.json().then((resource: { data: GameItemInterface[] }) => {
-                setGames(resource.data);
-                setInitialGames(resource.data);
-            })
-        }).catch((err) => console.log(err))
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        if (!!localStorage.getItem(sessionStorage.getItem('user') as string) && !!initialGames.length) {
+            rebuildGames();
+        }
+    }, [initialGames])
 
     useEffect(() => {
         rebuildGames();
+        localStorage.setItem(sessionStorage.getItem('user') as string, JSON.stringify({filters, sorting}))
     }, [filters, search, sorting])
 
     const getSorted = (games: GameItemInterface[]): GameItemInterface[] => {
